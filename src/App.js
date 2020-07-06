@@ -18,7 +18,7 @@ class App extends React.Component {
       {
         id: 2,
         title: 'Dinner with wife',
-        completed: true
+        completed: false
       },
       {
         id: 3,
@@ -28,6 +28,7 @@ class App extends React.Component {
     ]
   }
 
+  // Toggle complete 
   markComplete = (id) => {
     this.setState({ todos: this.state.todos.map(todo => {
       if(todo.id === id){
@@ -37,10 +38,16 @@ class App extends React.Component {
     }) });
   }
 
+  // Delete Todo
+  delTodo = (id) => {
+    // spread operator ([...) which copies over the contents of the array in accordance to filter - i.e. those ids which do not match the id passed via parameter (id being deleted)
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id !== id)] });
+  }
+
   render() {
     return (
       <div className="App">
-        <Todos todos= {this.state.todos} markComplete={this.markComplete}/>
+        <Todos todos= {this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo}/>
       </div>
     );
   }
