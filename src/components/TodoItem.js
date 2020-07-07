@@ -29,7 +29,9 @@ export class TodoItem extends Component {
 
 // PropTypes
 TodoItem.propTypes = {
-    todos: PropTypes.object.isRequired
+    todos: PropTypes.object.isRequired,
+    markComplete: PropTypes.func.isRequired,
+    delTodo: PropTypes.func.isRequired,
 }
 
 // if using variables using only one set of curly braces - otherwise use two (just an example, not using this)
